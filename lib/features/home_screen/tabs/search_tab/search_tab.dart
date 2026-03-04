@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,7 +8,7 @@ import 'package:movies/core/styles/app_style.dart';
 import 'package:movies/features/home_screen/tabs/search_tab/widgets/movie_poster.dart';
 
 class SearchTab extends StatelessWidget {
-  const SearchTab({super.key});
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +18,8 @@ class SearchTab extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
+              controller: searchController,
+              style: AppStyle.font20WhiteBold,
               decoration: InputDecoration(
                 hintText: AppString.search,
                 hintStyle: AppStyle.font20WhiteW400,
@@ -42,10 +43,9 @@ class SearchTab extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide.none,
+                  borderSide: BorderSide(color: Colors.white, width: 1),
                 ),
               ),
-
             ),
           ),
           Expanded(
@@ -61,7 +61,7 @@ class SearchTab extends StatelessWidget {
                 return MoviePoster();
               },
             ),
-          )
+          ),
         ],
       ),
     );
