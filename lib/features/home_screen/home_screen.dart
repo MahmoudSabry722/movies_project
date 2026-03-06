@@ -29,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColor.primaryColor,
       body: tabs[selectedIndex],
 
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(
           left: 24,
@@ -52,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              GestureDetector(
+             GestureDetector(
                 onTap: () => setState(() => selectedIndex = 0),
                 child: SvgPicture.asset(
                   selectedIndex == 0 ? AppIcon.homeSelected : AppIcon.home,
