@@ -6,4 +6,5 @@ abstract class AppRoute {
   static const String home = "home";
   static const String movieDetails = "movieDetails";
   static const String updateProfile = "updateProfile";
+
 }

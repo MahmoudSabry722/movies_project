@@ -1,41 +1,92 @@
 import 'package:flutter/material.dart';
+import '../colors/app_color.dart';
+import '../styles/app_style.dart';
 
+class CustomElevatedButton extends StatefulWidget {
 
-class CustomElevatedButton extends StatelessWidget {
-  final String elevatedButtonText;
-  final VoidCallback elevatedButtonAction;
-  final Color backGroundColor;
-  final TextStyle elevatedButtonTextStyle;
-  final Widget? elevatedButtonIcon;
-  final Color? borderColor;
+  final String text;
+  final VoidCallback onPressed;
+  final bool isOutlined;
 
-  const CustomElevatedButton(
-      {required this.elevatedButtonTextStyle, required this.backGroundColor, required this.elevatedButtonText, required this.elevatedButtonAction, super.key, this.elevatedButtonIcon, this.borderColor});
+  const CustomElevatedButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.isOutlined = false,
+  });
+
+  @override
+  State<CustomElevatedButton> createState() => _CustomElevatedButtonState();
+}
+
+class _CustomElevatedButtonState extends State<CustomElevatedButton> {
+
+  double scale = 1;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        backgroundColor:backGroundColor,
-        side: borderColor != null
-            ? BorderSide(color: borderColor!)
-            : BorderSide.none,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+
+    return GestureDetector(
+
+      onTapDown: (_) {
+        setState(() {
+          scale = 0.95;
+        });
+      },
+
+      onTapUp: (_) {
+        setState(() {
+          scale = 1;
+        });
+        widget.onPressed();
+      },
+
+      onTapCancel: (){
+        setState(() {
+          scale = 1;
+        });
+      },
+
+      child: AnimatedScale(
+
+        duration: const Duration(milliseconds: 120),
+        scale: scale,
+
+        child: Container(
+
+          height: 55,
+
+          decoration: BoxDecoration(
+
+            color: widget.isOutlined
+                ? Colors.transparent
+                : AppColor.secondaryColor,
+
+            borderRadius: BorderRadius.circular(12),
+
+            border: widget.isOutlined
+                ? Border.all(
+              color: AppColor.secondaryColor,
+              width: 2,
+            )
+                : null,
+
+          ),
+
+          child: Center(
+
+            child: Text(
+
+              widget.text,
+
+              style: widget.isOutlined
+                  ? AppStyle.font20GoldW600
+                  : AppStyle.font20BlackW600,
+
+            ),
+
+          ),
         ),
-      ),
-      onPressed: elevatedButtonAction,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (elevatedButtonIcon != null) ...[
-            const SizedBox(width: 10),
-            elevatedButtonIcon!,
-            const SizedBox(width: 10),
-          ],
-          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
-        ],
       ),
     );
   }
