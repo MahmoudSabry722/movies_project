@@ -6,7 +6,6 @@ import 'package:movies/core/strings/app_string.dart';
 import 'package:movies/core/widgets/CustomTextFormField.dart';
 import 'package:movies/features/auth/AvatarPageView.dart';
 import 'package:movies/features/auth/login_screen.dart';
-
 import '../../core/widgets/custom_elevated_button.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -38,6 +37,7 @@ class RegisterScreen extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.white),),
+                SizedBox(height: 7,),
                 CustomTextFormField(hintText:AppString.name,prefixIcon:SvgPicture.asset( AppIcon.name),),
                 SizedBox(height: 16,),
                 CustomTextFormField(hintText:AppString.email,prefixIcon:SvgPicture.asset( AppIcon.email),),
