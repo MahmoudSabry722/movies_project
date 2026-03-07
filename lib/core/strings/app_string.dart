@@ -61,6 +61,7 @@ abstract class AppString {
   static const String pickAvatar = "Pick Avatar";
   static const String deleteAccount = "Delete Account";
   static const String updateData = "Update Data";
+  static const String resetPassword = "Reset Password";
 
   static const String screenShots = "Screen Shots";
   static const String similar = "Similar";

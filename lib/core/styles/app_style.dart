@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:movies/core/colors/app_color.dart';
 
 abstract class AppStyle {
