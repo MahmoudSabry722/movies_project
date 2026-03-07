@@ -62,7 +62,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
                 ? Colors.transparent
                 : AppColor.secondaryColor,
 
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(15),
 
             border: widget.isOutlined
                 ? Border.all(

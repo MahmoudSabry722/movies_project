@@ -4,6 +4,7 @@ import 'package:movies/core/styles/app_style.dart';
 import 'package:movies/core/widgets/custom_elevated_button.dart';
 import 'onboarding_data.dart';
 import 'package:movies/features/home_screen/home_screen.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -12,23 +13,17 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-
   final PageController controller = PageController();
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       backgroundColor: AppColor.primaryColor,
 
       body: PageView.builder(
-
         controller: controller,
-
         physics: const NeverScrollableScrollPhysics(),
-
         itemCount: onboardingPages.length,
 
         onPageChanged: (index) {
@@ -37,12 +32,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           });
         },
 
-        itemBuilder: (context,index){
+        itemBuilder: (context, index) {
 
           final page = onboardingPages[index];
 
           return Stack(
-
             children: [
 
               /// IMAGE
@@ -54,7 +48,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
 
               /// GRADIENT
-              /// GRADIENT
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
@@ -64,11 +57,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       colors: [
 
                         page.gradientColor.withOpacity(0),
-
                         page.gradientColor.withOpacity(0.5),
-
                         page.gradientColor.withOpacity(0.9),
-
                         page.gradientColor,
 
                       ],
@@ -83,24 +73,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
 
-
-              /// FIRST PAGE
-              if(index == 0)
+              /// FIRST PAGE CONTENT
+              if (index == 0)
                 Positioned(
-
-                  left: 24,
-                  right: 24,
-                  bottom: 60,
+                  left: 16,
+                  right: 16,
+                  bottom: 16,
 
                   child: Column(
-
                     mainAxisSize: MainAxisSize.min,
-
                     children: [
 
                       Text(
                         page.title,
-                        style: AppStyle.font24WhiteBold,
+                        style: AppStyle.font36WhiteBold,
                         textAlign: TextAlign.center,
                       ),
 
@@ -108,146 +94,123 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                       Text(
                         page.description,
-                        style: AppStyle.font20WhiteW400,
-                        textAlign: TextAlign.center,
+                        style: AppStyle.font18WhiteW400,
+                        textAlign: TextAlign.justify,
                       ),
 
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 20),
 
                       CustomElevatedButton(
                         text: "Explore Now",
-                        onPressed: (){
+                        onPressed: () {
                           controller.nextPage(
                             duration: const Duration(milliseconds: 350),
                             curve: Curves.ease,
                           );
                         },
                       ),
-
                     ],
                   ),
                 ),
 
+              /// BOTTOM CARD
+              if (index != 0)
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
 
+                  child: Center(
+                    child: Container(
 
-              /// DRAGGABLE CARD
-              if(index != 0)
-                DraggableScrollableSheet(
+                      constraints: const BoxConstraints(
+                        maxWidth: 430,
+                        maxHeight: 343,
+                      ),
 
-                  initialChildSize: 0.30,
-                  minChildSize: 0.18,
-                  maxChildSize: 0.60,
-
-                  builder: (context, scrollController) {
-
-                    return Container(
-
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.fromLTRB(24, 32, 24, 32),
 
                       decoration: const BoxDecoration(
-
-                        color: Colors.black,
-
+                        color: Color(0xFF121312),
                         borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(32),
+                          top: Radius.circular(40),
                         ),
-
                       ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
 
-                      child: ListView(
+                          children: [
 
-                        controller: scrollController,
-
-                        children: [
-
-                          /// HANDLE
-                          Center(
-                            child: Container(
-                              width: 40,
-                              height: 4,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
+                            /// TITLE
+                            Text(
+                              page.title,
+                              style: AppStyle.font24WhiteBold,
+                              textAlign: TextAlign.center,
                             ),
-                          ),
 
-                          const SizedBox(height: 20),
+                            const SizedBox(height: 8),
 
-                          /// TITLE
-                          Text(
-                            page.title,
-                            style: AppStyle.font24WhiteBold,
-                            textAlign: TextAlign.center,
-                          ),
+                            /// DESCRIPTION
+                            Text(
+                              page.description,
+                              style: AppStyle.font20WhiteW400,
+                              textAlign: TextAlign.center,
+                            ),
 
-                          const SizedBox(height: 10),
+                            const SizedBox(height: 6),
 
-                          /// DESCRIPTION
-                          Text(
-                            page.description,
-                            style: AppStyle.font20WhiteW400,
-                            textAlign: TextAlign.center,
-                          ),
+                            /// NEXT / FINISH
+                            CustomElevatedButton(
+                              text: index == onboardingPages.length - 1
+                                  ? "Finish"
+                                  : "Next",
 
-                          const SizedBox(height: 24),
+                              onPressed: () {
 
-                          /// NEXT
-                          CustomElevatedButton(
+                                if (index < onboardingPages.length - 1) {
 
-                            text: index == onboardingPages.length - 1
-                                ? "Finish"
-                                : "Next",
+                                  controller.nextPage(
+                                    duration: const Duration(milliseconds: 350),
+                                    curve: Curves.ease,
+                                  );
 
-                            onPressed: (){
+                                } else {
 
-                              if(index < onboardingPages.length - 1){
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const HomeScreen(),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
 
-                                controller.nextPage(
-                                  duration: const Duration(milliseconds: 350),
-                                  curve: Curves.ease,
-                                );
+                            /// BACK
+                            if (index > 1) ...[
+                              const SizedBox(height: 6),
 
-                              } else {
+                              CustomElevatedButton(
+                                text: "Back",
+                                isOutlined: true,
 
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const HomeScreen(),
-                                  ),
-                                );
+                                onPressed: () {
+                                  controller.previousPage(
+                                    duration: const Duration(milliseconds: 350),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                              ),
+                            ],
 
-                              }
-
-                            },
-                          ),
-
-                          const SizedBox(height: 12),
-
-                          /// BACK
-                          CustomElevatedButton(
-
-                            text: "Back",
-                            isOutlined: true,
-
-                            onPressed: (){
-                              controller.previousPage(
-                                duration: const Duration(milliseconds: 350),
-                                curve: Curves.ease,
-                              );
-                            },
-
-                          ),
-
-                        ],
-                      ),
-                    );
-                  },
+                          ],
+                        ),
+                    ),
+                  ),
                 ),
 
             ],
           );
-
         },
       ),
     );
