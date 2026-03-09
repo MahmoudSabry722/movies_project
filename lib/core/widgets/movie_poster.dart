@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/assets/app_assets.dart';
 import 'package:movies/core/colors/app_color.dart';
@@ -13,11 +12,12 @@ class MoviePoster extends StatelessWidget {
     return Stack(
       children: [
         ClipRRect(
-          borderRadius: BorderRadiusGeometry.circular(16),
+          borderRadius: BorderRadius.circular(16),
           child: Image.asset(
             AppImage.onBoarding6,
-            fit: BoxFit.scaleDown,
+            fit: BoxFit.cover,
             width: double.infinity,
+            height: double.infinity,
           ),
         ),
 
@@ -25,16 +25,17 @@ class MoviePoster extends StatelessWidget {
           top: 10,
           left: 10,
           child: Container(
-            padding: REdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: AppColor.primaryColor.withOpacity(0.54),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Text("7.7", style: AppStyle.font20WhiteW400),
-                SizedBox(width: 5.w),
-                SvgPicture.asset(AppIcon.star, width: 16.w, height: 16.h),
+                Text("7.7", style: AppStyle.font20WhiteW400.copyWith(fontSize: 14)),
+                const SizedBox(width: 4),
+                SvgPicture.asset(AppIcon.star, width: 14, height: 14),
               ],
             ),
           ),

@@ -46,14 +46,6 @@ abstract class AppString {
   static const String watch = "Watch";
   static const String search = "Search";
 
-  static const String action = "Action";
-  static const String adventure = "Adventure";
-  static const String animation = "Animation";
-  static const String biography = "Biography";
-  static const String sciFi = "Sci-Fi";
-  static const String fantasy = "Fantasy";
-  static const String horror = "Horror";
-
   static const String editProfile = "Edit Profile";
   static const String exit = "Exit";
   static const String watchList = "Watch List";
