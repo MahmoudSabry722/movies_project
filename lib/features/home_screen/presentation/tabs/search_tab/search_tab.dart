@@ -13,6 +13,7 @@ class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: Column(
         children: [
           Padding(
@@ -49,17 +50,21 @@ class SearchTab extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: GridView.builder(
-              itemCount: 20,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: .7,
+            child: Padding(
+              padding: REdgeInsets.symmetric(horizontal: 16),
+              child: GridView.builder(
+                padding: REdgeInsets.only(bottom: 100),
+                itemCount: 20,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 189 / 279,
+                ),
+                itemBuilder: (context, index) {
+                  return MoviePoster();
+                },
               ),
-              itemBuilder: (context, index) {
-                return MoviePoster();
-              },
             ),
           ),
         ],

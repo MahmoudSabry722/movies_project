@@ -9,18 +9,24 @@ import 'package:movies/core/widgets/custom_elvatedButton.dart';
 import 'package:movies/core/widgets/custom_textField.dart';
 
 class UpdateProfile extends StatefulWidget {
-  String selectedAvatar = AppImage.avatar1;
+
+
+  const UpdateProfile({super.key});
 
   @override
   State<UpdateProfile> createState() => _UpdateTabState();
 }
 
 class _UpdateTabState extends State<UpdateProfile> {
+  String selectedAvatar = AppImage.avatar1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: AppColor.secondaryColor,
+        ),
         backgroundColor: Colors.transparent,
         title: Text(AppString.pickAvatar, style: AppStyle.font16GoldW400),
         centerTitle: true,
@@ -69,9 +75,14 @@ class _UpdateTabState extends State<UpdateProfile> {
                           },
                         );
                       },
-                      child: CircleAvatar(
-                        radius: 75,
-                        backgroundImage: AssetImage(widget.selectedAvatar),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          selectedAvatar,
+                          width: 150.w,
+                          height: 150.h,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -131,12 +142,12 @@ class _UpdateTabState extends State<UpdateProfile> {
   }
 
   Widget avatarItem(String image) {
-    bool isSelected = widget.selectedAvatar == image;
+    bool isSelected = selectedAvatar == image;
 
     return GestureDetector(
       onTap: () {
         setState(() {
-          widget.selectedAvatar = image;
+          selectedAvatar = image;
         });
         Navigator.pop(context);
       },
@@ -146,10 +157,18 @@ class _UpdateTabState extends State<UpdateProfile> {
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(color: AppColor.secondaryColor, width: 2),
           color: isSelected
-              ? AppColor.secondaryColor.withOpacity(0.56)
+              ? AppColor.secondaryColor.withValues(alpha: .56)
               : Colors.transparent,
         ),
-        child: CircleAvatar(radius: 35.r, backgroundImage: AssetImage(image)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.asset(
+            image,
+            width: 118,
+            height: 118,
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }
