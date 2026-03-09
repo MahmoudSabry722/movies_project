@@ -16,7 +16,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  List<Widget> tabs = [
+
+  final List<Widget> tabs = const [
     HomeTab(),
     SearchTab(),
     BrowseTab(),
@@ -27,60 +28,54 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
+
+      extendBody: true,
+
       body: tabs[selectedIndex],
 
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(
           left: 24,
           right: 24,
-          bottom: 8,
+          bottom: 15,
         ),
         child: Container(
           height: 60,
           decoration: BoxDecoration(
-            color: AppColor.tertiaryColor,
+            color: AppColor.tertiaryColor.withOpacity(0.95),
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 150),
+                color: Colors.black.withOpacity(0.3),
                 blurRadius: 20,
-                offset: const Offset(0, 8),
+                offset: const Offset(0, 10),
               )
             ],
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-             GestureDetector(
-                onTap: () => setState(() => selectedIndex = 0),
-                child: SvgPicture.asset(
-                  selectedIndex == 0 ? AppIcon.homeSelected : AppIcon.home,
-                  height: 26,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => setState(() => selectedIndex = 1),
-                child: SvgPicture.asset(
-                  selectedIndex == 1 ? AppIcon.searchSelected : AppIcon.search,
-                  height: 26,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => setState(() => selectedIndex = 2),
-                child: SvgPicture.asset(
-                  selectedIndex == 2 ? AppIcon.browseSelected : AppIcon.browse,
-                  height: 26,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => setState(() => selectedIndex = 3),
-                child: SvgPicture.asset(
-                  selectedIndex == 3 ? AppIcon.profileSelected : AppIcon.profile,
-                  height: 26,
-                ),
-              ),
+              _buildNavItem(0, AppIcon.home, AppIcon.homeSelected),
+              _buildNavItem(1, AppIcon.search, AppIcon.searchSelected),
+              _buildNavItem(2, AppIcon.browse, AppIcon.browseSelected),
+              _buildNavItem(3, AppIcon.profile, AppIcon.profileSelected),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(int index, String iconPath, String selectedIconPath) {
+    bool isSelected = selectedIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() => selectedIndex = index),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: const EdgeInsets.all(8),
+        child: SvgPicture.asset(
+          isSelected ? selectedIconPath : iconPath,
+          height: 26,
         ),
       ),
     );
