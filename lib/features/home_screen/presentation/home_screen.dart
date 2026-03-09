@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/assets/app_assets.dart';
 import 'package:movies/core/colors/app_color.dart';
@@ -18,7 +17,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
 
-  final List<Widget> tabs = [HomeTab(), SearchTab(), BrowseTab(), ProfileTab()];
+  final List<Widget> tabs = [
+    HomeTab(),
+    SearchTab(),
+    BrowseTab(),
+    ProfileTab(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +34,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body: tabs[selectedIndex],
 
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 24, right: 24, bottom: 15),
+        padding: const EdgeInsets.only(
+          left: 24,
+          right: 24,
+          bottom: 15,
+        ),
         child: Container(
           height: 60,
           decoration: BoxDecoration(
             color: AppColor.tertiaryColor.withOpacity(0.95),
-            borderRadius: BorderRadius.circular(16.r),
+            borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.3),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
-              ),
+              )
             ],
           ),
           child: Row(

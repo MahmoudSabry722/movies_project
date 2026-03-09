@@ -12,7 +12,6 @@ import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widget
 import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/silver_app_bar_delegate.dart';
 import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/state_item.dart';
 
-
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
 
@@ -62,9 +61,13 @@ class ProfileTab extends StatelessWidget {
                                 child: Padding(
                                   padding: EdgeInsets.only(top: 20),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      StateItem(count: "12", label: "Watch List"),
+                                      StateItem(
+                                        count: "12",
+                                        label: "Watch List",
+                                      ),
                                       StateItem(count: "10", label: "History"),
                                     ],
                                   ),
@@ -82,9 +85,12 @@ class ProfileTab extends StatelessWidget {
                                   backGroundColor: AppColor.secondaryColor,
                                   elevatedButtonAction: () {
                                     Navigator.pushNamed(
-                                        context, AppRoute.updateProfile);
+                                      context,
+                                      AppRoute.updateProfile,
+                                    );
                                   },
-                                  elevatedButtonTextStyle: AppStyle.font20BlackW600,
+                                  elevatedButtonTextStyle:
+                                      AppStyle.font20BlackW600,
                                 ),
                               ),
                               const SizedBox(width: 8),
@@ -94,8 +100,11 @@ class ProfileTab extends StatelessWidget {
                                   elevatedButtonText: AppString.exit,
                                   backGroundColor: AppColor.elevatedButtonColor,
                                   elevatedButtonAction: () {},
-                                  elevatedButtonTextStyle: AppStyle.font20WhiteBold,
-                                  elevatedButtonIcon: SvgPicture.asset(AppIcon.exit),
+                                  elevatedButtonTextStyle:
+                                      AppStyle.font20WhiteBold,
+                                  elevatedButtonIcon: SvgPicture.asset(
+                                    AppIcon.exit,
+                                  ),
                                 ),
                               ),
                             ],
@@ -120,10 +129,7 @@ class ProfileTab extends StatelessWidget {
             ];
           },
           body: const TabBarView(
-            children: [
-              BuildWatchListContent(),
-              BuildHistoryContent(),
-            ],
+            children: [BuildWatchListContent(), BuildHistoryContent()],
           ),
         ),
       ),
