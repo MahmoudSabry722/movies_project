@@ -5,7 +5,7 @@ import 'package:movies/core/assets/app_assets.dart';
 import 'package:movies/core/colors/app_color.dart';
 import 'package:movies/core/strings/app_string.dart';
 import 'package:movies/core/styles/app_style.dart';
-import 'package:movies/features/home_screen/tabs/search_tab/widgets/movie_poster.dart';
+import 'package:movies/features/home_screen/presentation/tabs/search_tab/widgets/movie_poster.dart';
 
 class SearchTab extends StatelessWidget {
   TextEditingController searchController = TextEditingController();
