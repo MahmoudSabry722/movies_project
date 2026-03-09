@@ -8,7 +8,6 @@ import 'package:movies/features/home_screen/presentation/tabs/home_tab/home_tab.
 import 'package:movies/features/home_screen/presentation/tabs/profile_tab/profile_tab.dart';
 import 'package:movies/features/home_screen/presentation/tabs/search_tab/search_tab.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -18,62 +17,57 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  List<Widget> tabs = [
-    HomeTab(),
-    SearchTab(),
-    BrowseTab(),
-    ProfileTab(),
-  ];
+
+  final List<Widget> tabs = [HomeTab(), SearchTab(), BrowseTab(), ProfileTab()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.primaryColor,
-      body: tabs[selectedIndex], bottomNavigationBar: Container(
-      height: 60.h,
-      decoration: BoxDecoration(
-        color: AppColor.tertiaryColor,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 150),
-            blurRadius: 20.r,
-            offset: const Offset(0, 8),
+
+      extendBody: true,
+
+      body: tabs[selectedIndex],
+
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 24, right: 24, bottom: 15),
+        child: Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: AppColor.tertiaryColor.withOpacity(0.95),
+            borderRadius: BorderRadius.circular(16.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ],
           ),
-        ],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(0, AppIcon.home, AppIcon.homeSelected),
+              _buildNavItem(1, AppIcon.search, AppIcon.searchSelected),
+              _buildNavItem(2, AppIcon.browse, AppIcon.browseSelected),
+              _buildNavItem(3, AppIcon.profile, AppIcon.profileSelected),
+            ],
+          ),
+        ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          GestureDetector(
-            onTap: () => setState(() => selectedIndex = 0),
-            child: SvgPicture.asset(
-              selectedIndex == 0 ? AppIcon.homeSelected : AppIcon.home,
-              height: 26.h,
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() => selectedIndex = 1),
-            child: SvgPicture.asset(
-              selectedIndex == 1 ? AppIcon.searchSelected : AppIcon.search,
-              height: 26.h,
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() => selectedIndex = 2),
-            child: SvgPicture.asset(
-              selectedIndex == 2 ? AppIcon.browseSelected : AppIcon.browse,
-              height: 26.h,
-            ),
-          ),
-          GestureDetector(
-            onTap: () => setState(() => selectedIndex = 3),
-            child: SvgPicture.asset(
-              selectedIndex == 3 ? AppIcon.profileSelected : AppIcon.profile,
-              height: 26.h,
-            ),
-          ),
-        ],
+    );
+  }
+
+  Widget _buildNavItem(int index, String iconPath, String selectedIconPath) {
+    bool isSelected = selectedIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() => selectedIndex = index),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        padding: const EdgeInsets.all(8),
+        child: SvgPicture.asset(
+          isSelected ? selectedIconPath : iconPath,
+          height: 26,
         ),
       ),
     );

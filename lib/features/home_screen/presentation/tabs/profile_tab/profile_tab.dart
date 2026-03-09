@@ -6,11 +6,12 @@ import 'package:movies/core/routes/app_route.dart';
 import 'package:movies/core/strings/app_string.dart';
 import 'package:movies/core/styles/app_style.dart';
 import 'package:movies/core/widgets/custom_elevated_button.dart';
-import 'package:movies/features/home_screen/tabs/profile_tab/widgets/build_history_content.dart';
-import 'package:movies/features/home_screen/tabs/profile_tab/widgets/build_watch_list_content.dart';
-import 'package:movies/features/home_screen/tabs/profile_tab/widgets/profile_tab_bar.dart';
-import 'package:movies/features/home_screen/tabs/profile_tab/widgets/silver_app_bar_delegate.dart';
-import 'package:movies/features/home_screen/tabs/profile_tab/widgets/state_item.dart';
+import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/build_history_content.dart';
+import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/build_watch_list_content.dart';
+import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/profile_tab_bar.dart';
+import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/silver_app_bar_delegate.dart';
+import 'package:movies/features/home_screen/presentation/tabs/profile_tab/widgets/state_item.dart';
+
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});

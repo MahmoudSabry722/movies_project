@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/assets/app_assets.dart';
+import 'package:movies/core/assets/app_assets.dart';
 
 class BuildWatchListContent extends StatelessWidget {
   const BuildWatchListContent({super.key});

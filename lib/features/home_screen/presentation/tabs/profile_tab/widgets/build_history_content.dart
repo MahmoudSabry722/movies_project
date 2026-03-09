@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/movie_poster.dart';
+import 'package:movies/core/widgets/movie_poster.dart';
 
 class BuildHistoryContent extends StatelessWidget {
   const BuildHistoryContent({super.key});
