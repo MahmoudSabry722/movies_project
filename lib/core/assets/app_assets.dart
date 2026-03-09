@@ -62,4 +62,5 @@ abstract class AppIcon {
   static const String watchList= "${_basePath}watch_list_icon.svg";
 
   static const String user = "${_basePath}user_icon.svg";
+  static const String exit = "${_basePath}exit_icon.svg";
 }

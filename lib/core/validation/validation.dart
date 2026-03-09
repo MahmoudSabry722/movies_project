@@ -50,4 +50,11 @@ class Validation {
   static bool isValidEmail(String value) => _emailRegExp.hasMatch(value.trim());
 
   static bool isValidPassword(String value) => _passwordRegExp.hasMatch(value);
+
+  static String? confirmPassword(String? value, String password) {
+    final emptyCheck = required(value, message: "Confirm your password");
+    if (emptyCheck != null) return emptyCheck;
+    if (value != password) return "Passwords do not match";
+    return null;
+  }
 }
