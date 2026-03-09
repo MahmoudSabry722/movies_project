@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movies/core/assets/app_assets.dart';
+import 'package:movies/core/colors/app_color.dart';
+import 'package:movies/core/routes/app_route.dart';
 import 'package:movies/core/strings/app_string.dart';
+import 'package:movies/core/styles/app_style.dart';
+import 'package:movies/core/widgets/custom_elevated_button.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/build_history_content.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/build_watch_list_content.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/profile_tab_bar.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/silver_app_bar_delegate.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/state_item.dart';
-import '../../../../core/assets/app_assets.dart';
-import '../../../../core/colors/app_color.dart';
-import '../../../../core/styles/app_style.dart';
-import '../../../../core/widgets/custom_elevated_button.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -78,7 +79,10 @@ class ProfileTab extends StatelessWidget {
                                 child: CustomElevatedButton(
                                   elevatedButtonText: AppString.editProfile,
                                   backGroundColor: AppColor.secondaryColor,
-                                  elevatedButtonAction: () {},
+                                  elevatedButtonAction: () {
+                                    Navigator.pushNamed(
+                                        context, AppRoute.updateProfile);
+                                  },
                                   elevatedButtonTextStyle: AppStyle.font20BlackW600,
                                 ),
                               ),

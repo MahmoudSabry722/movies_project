@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies/core/colors/app_color.dart';
+import 'package:movies/core/styles/app_style.dart';
 import 'package:movies/core/widgets/movie_poster.dart';
-import '../../../../core/colors/app_color.dart';
-import '../../../../core/styles/app_style.dart';
 
 class BrowseTab extends StatefulWidget {
   const BrowseTab({super.key});

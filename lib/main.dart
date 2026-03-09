@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/routes/app_route.dart';
 import 'package:movies/features/home_screen/home_screen.dart';
+import 'package:movies/features/update_profile/presentation/screens/update_profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,12 +21,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           AppRoute.home: (context) => HomeScreen(),
+          AppRoute.updateProfile: (context) => UpdateProfile(),
           /*AppRoute.login: (context) => LoginScreen,
           AppRoute.register: (context) => RegisterScreen,
           AppRoute.forgetPassword: (context) => ForgetPasswordScreen,
           AppRoute.onBoarding: (context) => OnBoardingScreen,
           AppRoute.movieDetails: (context) => MovieDetailsScreen,
-          AppRoute.updateProfile: (context) => UpdateProfileScreen,*/
+          ,*/
         },
         initialRoute: AppRoute.home,
       ),
