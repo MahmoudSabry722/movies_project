@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/routes/app_route.dart';
+import 'package:movies/features/onboarding/onboarding_screen.dart';
 import 'package:movies/features/home_screen/presentation/home_screen.dart';
 import 'package:movies/features/update_profile/presentation/screens/update_profile.dart';
 
@@ -13,6 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Movies',
+      debugShowCheckedModeBanner: false,
+      routes: {
+
+        AppRoute.home: (context) => const HomeScreen(),
+        AppRoute.onBoarding: (context) => const OnboardingScreen(),
+
+      },
+
+      initialRoute: AppRoute.onBoarding,
     return ScreenUtilInit(
       designSize: Size(430, 932),
       splitScreenMode: false,
