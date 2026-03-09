@@ -58,4 +58,9 @@ abstract class AppStyle {
     fontSize: 14,
     fontWeight: FontWeight.bold,
   );
+  static TextStyle font36WhiteBold = TextStyle(
+    color: AppColor.textColor,
+    fontSize: 36,
+    fontWeight: FontWeight.bold,
+  );
 }

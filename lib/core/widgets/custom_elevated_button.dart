@@ -88,6 +88,29 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
           ),
         ),
       ),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(16.0),
+        backgroundColor:backGroundColor,
+        side: borderColor != null
+            ? BorderSide(color: borderColor!)
+            : BorderSide.none,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      onPressed: elevatedButtonAction,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
+          if (elevatedButtonIcon != null) ...[
+            const SizedBox(width: 10),
+            elevatedButtonIcon!,
+            const SizedBox(width: 10),
+          ],
+        ],
+      ),
     );
   }
 }
