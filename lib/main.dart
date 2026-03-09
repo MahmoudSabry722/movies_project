@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/routes/app_route.dart';
 import 'package:movies/features/home_screen/home_screen.dart';
 
@@ -11,19 +12,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Movies',
-      debugShowCheckedModeBanner: false,
-      routes: {
-        AppRoute.home: (context) => HomeScreen(),
-        /*AppRoute.login: (context) => LoginScreen,
-        AppRoute.register: (context) => RegisterScreen,
-        AppRoute.forgetPassword: (context) => ForgetPasswordScreen,
-        AppRoute.onBoarding: (context) => OnBoardingScreen,
-        AppRoute.movieDetails: (context) => MovieDetailsScreen,
-        AppRoute.updateProfile: (context) => UpdateProfileScreen,*/
-      },
-      initialRoute: AppRoute.home,
+    return ScreenUtilInit(
+      designSize: Size(430, 932),
+      splitScreenMode: false,
+      child: MaterialApp(
+        title: 'Movies',
+        debugShowCheckedModeBanner: false,
+        routes: {
+          AppRoute.home: (context) => HomeScreen(),
+          /*AppRoute.login: (context) => LoginScreen,
+          AppRoute.register: (context) => RegisterScreen,
+          AppRoute.forgetPassword: (context) => ForgetPasswordScreen,
+          AppRoute.onBoarding: (context) => OnBoardingScreen,
+          AppRoute.movieDetails: (context) => MovieDetailsScreen,
+          AppRoute.updateProfile: (context) => UpdateProfileScreen,*/
+        },
+        initialRoute: AppRoute.home,
+      ),
     );
   }
 }
