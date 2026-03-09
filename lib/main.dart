@@ -13,25 +13,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(430, 932),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          title: 'Movies',
-          debugShowCheckedModeBanner: false,
-          routes: {
-            AppRoute.home: (context) => const HomeScreen(),
-            /*AppRoute.login: (context) => LoginScreen,
-            AppRoute.register: (context) => RegisterScreen,
-            AppRoute.forgetPassword: (context) => ForgetPasswordScreen,
-            AppRoute.onBoarding: (context) => OnBoardingScreen,
-            AppRoute.movieDetails: (context) => MovieDetailsScreen,
-            AppRoute.updateProfile: (context) => UpdateProfileScreen,*/
-          },
-          initialRoute: AppRoute.home,
-        );
-      },
+      designSize: Size(430, 932),
+      splitScreenMode: false,
+      child: MaterialApp(
+        title: 'Movies',
+        debugShowCheckedModeBanner: false,
+        routes: {
+          AppRoute.home: (context) => HomeScreen(),
+          /*AppRoute.login: (context) => LoginScreen,
+          AppRoute.register: (context) => RegisterScreen,
+          AppRoute.forgetPassword: (context) => ForgetPasswordScreen,
+          AppRoute.onBoarding: (context) => OnBoardingScreen,
+          AppRoute.movieDetails: (context) => MovieDetailsScreen,
+          AppRoute.updateProfile: (context) => UpdateProfileScreen,*/
+        },
+        initialRoute: AppRoute.home,
+      ),
     );
   }
 }
