@@ -22,19 +22,19 @@ class CustomElevatedButton extends StatelessWidget {
             ? BorderSide(color: borderColor!)
             : BorderSide.none,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(15),
         ),
       ),
       onPressed: elevatedButtonAction,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
           if (elevatedButtonIcon != null) ...[
             const SizedBox(width: 10),
             elevatedButtonIcon!,
             const SizedBox(width: 10),
           ],
-          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
         ],
       ),
     );
