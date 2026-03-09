@@ -29,12 +29,12 @@ class CustomElevatedButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
           if (elevatedButtonIcon != null) ...[
             const SizedBox(width: 10),
             elevatedButtonIcon!,
             const SizedBox(width: 10),
           ],
-          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
         ],
       ),
     );

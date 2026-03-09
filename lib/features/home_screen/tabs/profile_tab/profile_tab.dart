@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/strings/app_string.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/build_history_content.dart';
 import 'package:movies/features/home_screen/tabs/profile_tab/widgets/build_watch_list_content.dart';
@@ -89,6 +90,7 @@ class ProfileTab extends StatelessWidget {
                                   backGroundColor: AppColor.elevatedButtonColor,
                                   elevatedButtonAction: () {},
                                   elevatedButtonTextStyle: AppStyle.font20WhiteBold,
+                                  elevatedButtonIcon: SvgPicture.asset(AppIcon.exit),
                                 ),
                               ),
                             ],
