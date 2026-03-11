@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/assets/app_assets.dart';
+import 'package:movies/core/styles/app_style.dart';
 
-import '../../../../../../core/styles/app_style.dart';
 
 class EmptySearchState extends StatelessWidget {
   const EmptySearchState({super.key});

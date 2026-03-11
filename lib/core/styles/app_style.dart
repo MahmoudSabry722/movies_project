@@ -42,6 +42,11 @@ abstract class AppStyle {
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle font16BlackW600 = TextStyle(
+    color: AppColor.primaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle font18WhiteW400 = TextStyle(
     color: AppColor.textColor,
     fontSize: 18,
@@ -56,11 +61,6 @@ abstract class AppStyle {
   static TextStyle font14GoldBold = TextStyle(
     color: AppColor.secondaryColor,
     fontSize: 14,
-    fontWeight: FontWeight.bold,
-  );
-  static TextStyle font36WhiteBold = TextStyle(
-    color: AppColor.textColor,
-    fontSize: 36,
     fontWeight: FontWeight.bold,
   );
 }

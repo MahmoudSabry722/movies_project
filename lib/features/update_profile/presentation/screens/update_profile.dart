@@ -67,9 +67,7 @@ class _UpdateTabState extends State<UpdateProfile> {
                         avatars: avatars,
                         selectedAvatar: selectedAvatar,
                         onAvatarSelected: (newPath) {
-                          setState(
-                            () => selectedAvatar = newPath,
-                          );
+                          setState(() => selectedAvatar = newPath);
                         },
                       );
                     },
@@ -121,21 +119,19 @@ class _UpdateTabState extends State<UpdateProfile> {
               SizedBox(height: 80.h),
 
               CustomElevatedButton(
-                elevatedButtonTextStyle: AppStyle.font20WhiteW400,
-                backGroundColor: AppColor.elevatedButtonColor,
-                elevatedButtonText: AppString.deleteAccount,
-                elevatedButtonAction: () {},
+                text: AppString.deleteAccount,
+                backgroundColor: AppColor.elevatedButtonColor,
+                textStyle: AppStyle.font20WhiteW400,
+                onPressed: () {},
               ),
 
               SizedBox(height: 20.h),
 
               CustomElevatedButton(
-                elevatedButtonTextStyle: AppStyle.font20BlackW600.copyWith(
-                  fontWeight: FontWeight.w400,
-                ),
-                backGroundColor: AppColor.secondaryColor,
-                elevatedButtonText: AppString.updateData,
-                elevatedButtonAction: () {
+                text: AppString.updateData,
+                backgroundColor: AppColor.secondaryColor,
+                textStyle: AppStyle.font20BlackW600,
+                onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),

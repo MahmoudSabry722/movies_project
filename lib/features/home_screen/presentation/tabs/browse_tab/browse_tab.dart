@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/assets/app_assets.dart';
 import 'package:movies/core/colors/app_color.dart';
 import 'package:movies/core/styles/app_style.dart';
 import 'package:movies/core/widgets/movie_poster.dart';
@@ -22,6 +24,15 @@ class _BrowseTabState extends State<BrowseTab> {
     "Animation",
   ];
 
+  final List<String> movieImages = [
+    AppImage.onBoarding1,
+    AppImage.onBoarding2,
+    AppImage.onBoarding3,
+    AppImage.onBoarding4,
+    AppImage.onBoarding5,
+    AppImage.onBoarding6,
+  ];
+
   int selectedCategoryIndex = 0;
 
   @override
@@ -33,17 +44,17 @@ class _BrowseTabState extends State<BrowseTab> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 16),
+              padding: EdgeInsets.only(top: 16.h),
               child: SizedBox(
-                height: 48,
+                height: 45.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   itemBuilder: (context, index) {
                     bool isSelected = selectedCategoryIndex == index;
                     return Padding(
-                      padding: const EdgeInsets.only(right: 8),
+                      padding: EdgeInsets.only(right: 10.w),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -51,13 +62,13 @@ class _BrowseTabState extends State<BrowseTab> {
                           });
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: isSelected
                                 ? AppColor.secondaryColor
-                                : AppColor.primaryColor,
-                            borderRadius: BorderRadius.circular(16),
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(12.r),
                             border: Border.all(
                               color: AppColor.secondaryColor,
                               width: 1.5,
@@ -66,8 +77,12 @@ class _BrowseTabState extends State<BrowseTab> {
                           child: Text(
                             categories[index],
                             style: isSelected
-                                ? AppStyle.font20BlackW600
-                                : AppStyle.font20GoldW600,
+                                ? AppStyle.font20BlackW600.copyWith(
+                                    fontSize: 16.sp,
+                                  )
+                                : AppStyle.font20GoldW600.copyWith(
+                                    fontSize: 16.sp,
+                                  ),
                           ),
                         ),
                       ),
@@ -77,22 +92,25 @@ class _BrowseTabState extends State<BrowseTab> {
               ),
             ),
 
-            const SizedBox(height: 16),
+            SizedBox(height: 20.h),
 
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: GridView.builder(
-                  padding: const EdgeInsets.only(top: 0, bottom: 100),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.only(bottom: 100.h),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    childAspectRatio: 189 / 279,
+                    crossAxisSpacing: 15.w,
+                    mainAxisSpacing: 15.h,
+                    childAspectRatio: 0.7,
                   ),
-                  itemCount: 18,
+                  itemCount: 20,
+
                   itemBuilder: (context, index) {
-                    return const MoviePoster();
+                    String imagePath = movieImages[index % movieImages.length];
+                    return MoviePoster(imagePath: imagePath, rating: "7.7");
                   },
                 ),
               ),

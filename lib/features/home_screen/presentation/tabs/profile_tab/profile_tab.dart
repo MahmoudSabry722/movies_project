@@ -81,30 +81,28 @@ class ProfileTab extends StatelessWidget {
                               Expanded(
                                 flex: 3,
                                 child: CustomElevatedButton(
-                                  elevatedButtonText: AppString.editProfile,
-                                  backGroundColor: AppColor.secondaryColor,
-                                  elevatedButtonAction: () {
+                                  text: AppString.editProfile,
+                                  backgroundColor: AppColor.secondaryColor,
+                                  textStyle: AppStyle.font20BlackW600,
+                                  onPressed: () {
                                     Navigator.pushNamed(
                                       context,
                                       AppRoute.updateProfile,
                                     );
                                   },
-                                  elevatedButtonTextStyle:
-                                      AppStyle.font20BlackW600,
                                 ),
                               ),
                               const SizedBox(width: 8),
                               Expanded(
                                 flex: 2,
                                 child: CustomElevatedButton(
-                                  elevatedButtonText: AppString.exit,
-                                  backGroundColor: AppColor.elevatedButtonColor,
-                                  elevatedButtonAction: () {},
-                                  elevatedButtonTextStyle:
-                                      AppStyle.font20WhiteBold,
-                                  elevatedButtonIcon: SvgPicture.asset(
-                                    AppIcon.exit,
-                                  ),
+                                  text: AppString.exit,
+                                  backgroundColor: AppColor.elevatedButtonColor,
+                                  textStyle: AppStyle.font20WhiteBold,
+                                  icon: SvgPicture.asset(AppIcon.exit),
+                                  onPressed: () {
+                                    // action
+                                  },
                                 ),
                               ),
                             ],

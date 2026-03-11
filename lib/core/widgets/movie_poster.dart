@@ -5,7 +5,10 @@ import 'package:movies/core/colors/app_color.dart';
 import 'package:movies/core/styles/app_style.dart';
 
 class MoviePoster extends StatelessWidget {
-  const MoviePoster({super.key});
+  final String imagePath;
+  final String rating;
+
+  const MoviePoster({super.key, required this.imagePath, required this.rating});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +17,12 @@ class MoviePoster extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.asset(
-            AppImage.onBoarding6,
+            imagePath,
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
           ),
         ),
-
         Positioned(
           top: 10,
           left: 10,
@@ -33,7 +35,10 @@ class MoviePoster extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("7.7", style: AppStyle.font20WhiteW400.copyWith(fontSize: 14)),
+                Text(
+                  rating,
+                  style: AppStyle.font20WhiteW400.copyWith(fontSize: 14),
+                ),
                 const SizedBox(width: 4),
                 SvgPicture.asset(AppIcon.star, width: 14, height: 14),
               ],

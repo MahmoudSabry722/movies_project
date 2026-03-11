@@ -1,115 +1,62 @@
 import 'package:flutter/material.dart';
 import '../colors/app_color.dart';
-import '../styles/app_style.dart';
 
-class CustomElevatedButton extends StatefulWidget {
-
+class CustomElevatedButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final bool isOutlined;
+  final Color? backgroundColor;
+  final TextStyle? textStyle;
+  final Widget? icon;
+  final Color? borderColor;
+  final double? width;
+  final double height;
 
   const CustomElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
-    this.isOutlined = false,
+    this.backgroundColor,
+    this.textStyle,
+    this.icon,
+    this.borderColor,
+    this.width,
+    this.height = 55,
   });
 
   @override
-  State<CustomElevatedButton> createState() => _CustomElevatedButtonState();
-}
-
-class _CustomElevatedButtonState extends State<CustomElevatedButton> {
-
-  double scale = 1;
-
-  @override
   Widget build(BuildContext context) {
-
-    return GestureDetector(
-
-      onTapDown: (_) {
-        setState(() {
-          scale = 0.95;
-        });
-      },
-
-      onTapUp: (_) {
-        setState(() {
-          scale = 1;
-        });
-        widget.onPressed();
-      },
-
-      onTapCancel: (){
-        setState(() {
-          scale = 1;
-        });
-      },
-
-      child: AnimatedScale(
-
-        duration: const Duration(milliseconds: 120),
-        scale: scale,
-
-        child: Container(
-
-          height: 55,
-
-          decoration: BoxDecoration(
-
-            color: widget.isOutlined
-                ? Colors.transparent
-                : AppColor.secondaryColor,
-
+    return SizedBox(
+      width: width ?? double.infinity,
+      height: height,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor ?? AppColor.secondaryColor,
+          elevation: 0,
+          side: borderColor != null
+              ? BorderSide(color: borderColor!, width: 1.5)
+              : BorderSide.none,
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
-
-            border: widget.isOutlined
-                ? Border.all(
-              color: AppColor.secondaryColor,
-              width: 2,
-            )
-                : null,
-
           ),
-
-          child: Center(
-
-            child: Text(
-
-              widget.text,
-
-              style: widget.isOutlined
-                  ? AppStyle.font20GoldW600
-                  : AppStyle.font20BlackW600,
-
+        ),
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) ...[
+              icon!,
+              const SizedBox(width: 10),
+            ],
+            Text(
+              text,
+              style: textStyle ?? const TextStyle(
+                color: AppColor.primaryColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-
-          ),
-        ),
-      ),
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        backgroundColor:backGroundColor,
-        side: borderColor != null
-            ? BorderSide(color: borderColor!)
-            : BorderSide.none,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-      onPressed: elevatedButtonAction,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
-          if (elevatedButtonIcon != null) ...[
-            const SizedBox(width: 10),
-            elevatedButtonIcon!,
-            const SizedBox(width: 10),
           ],
-        ],
+        ),
       ),
     );
   }

@@ -19,7 +19,7 @@ abstract class AppString {
 
   static const String exploreNow = "Explore Now";
 
-  static const String next = "next";
+  static const String next = "Next";
   static const String back = "Back";
   static const String finish = "Finish";
 
