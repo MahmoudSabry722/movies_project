@@ -4,7 +4,34 @@ import 'package:movies/core/routes/app_route.dart';
 import 'package:movies/features/home_screen/presentation/home_screen.dart';
 import 'package:movies/features/update_profile/presentation/screens/update_profile.dart';
 
-void main() {
+import 'core/network/api_manager.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // بننادي الـ ApiManager
+  var apiManager = ApiManager();
+
+  try {
+    print("جاري جلب البيانات...");
+
+    var response = await apiManager.getMovies();
+
+    if (response.status == "ok") {
+      var movies = response.data?.movies ?? [];
+
+      print("تم بنجاح! عدد الأفلام: ${movies.length}");
+
+      for (var movie in movies) {
+        print("اسم الفيلم: ${movie.title} | التقييم: ${movie.rating}");
+      }
+    } else {
+      print("الـ API رد برسالة خطأ: ${response.statusMessage}");
+    }
+  } catch (e) {
+    print("حصلت مشكلة: $e");
+  }
+
   runApp(const MyApp());
 }
 
