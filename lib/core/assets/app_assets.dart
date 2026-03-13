@@ -24,6 +24,8 @@ abstract class AppImage {
   static const String availableNow = "${_basePath}available_now.png";
   static const String popcornImage = "${_basePath}popcorn_image.png";
   static const String watchNow = "${_basePath}watch_now.png";
+  static const String poster1 = "${_basePath}black_widow_poster.png";
+  static const String poster2 = "${_basePath}iron_man_poster.png";
 }
 
 abstract class AppIcon {

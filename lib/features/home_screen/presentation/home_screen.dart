@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/assets/app_assets.dart';
 import 'package:movies/core/colors/app_color.dart';
-import 'package:movies/features/home_screen/tabs/browse_tab/browse_tab.dart';
-import 'package:movies/features/home_screen/tabs/home_tab/home_tab.dart';
-import 'package:movies/features/home_screen/tabs/profile_tab/profile_tab.dart';
-import 'package:movies/features/home_screen/tabs/search_tab/search_tab.dart';
+import 'package:movies/features/home_screen/presentation/tabs/browse_tab/browse_tab.dart';
+import 'package:movies/features/home_screen/presentation/tabs/home_tab/home_tab.dart';
+import 'package:movies/features/home_screen/presentation/tabs/profile_tab/profile_tab.dart';
+import 'package:movies/features/home_screen/presentation/tabs/search_tab/search_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
 
-  final List<Widget> tabs = const [
+  final List<Widget> tabs = [
     HomeTab(),
     SearchTab(),
     BrowseTab(),

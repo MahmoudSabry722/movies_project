@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/styles/app_style.dart';
+import 'package:movies/core/styles/app_style.dart';
 
 class StateItem extends StatelessWidget {
   final String count;

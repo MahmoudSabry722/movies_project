@@ -1,41 +1,62 @@
 import 'package:flutter/material.dart';
-
+import '../colors/app_color.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  final String elevatedButtonText;
-  final VoidCallback elevatedButtonAction;
-  final Color backGroundColor;
-  final TextStyle elevatedButtonTextStyle;
-  final Widget? elevatedButtonIcon;
+  final String text;
+  final VoidCallback onPressed;
+  final Color? backgroundColor;
+  final TextStyle? textStyle;
+  final Widget? icon;
   final Color? borderColor;
+  final double? width;
+  final double height;
 
-  const CustomElevatedButton(
-      {required this.elevatedButtonTextStyle, required this.backGroundColor, required this.elevatedButtonText, required this.elevatedButtonAction, super.key, this.elevatedButtonIcon, this.borderColor});
+  const CustomElevatedButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.backgroundColor,
+    this.textStyle,
+    this.icon,
+    this.borderColor,
+    this.width,
+    this.height = 55,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all(16.0),
-        backgroundColor:backGroundColor,
-        side: borderColor != null
-            ? BorderSide(color: borderColor!)
-            : BorderSide.none,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+    return SizedBox(
+      width: width ?? double.infinity,
+      height: height,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor ?? AppColor.secondaryColor,
+          elevation: 0,
+          side: borderColor != null
+              ? BorderSide(color: borderColor!, width: 1.5)
+              : BorderSide.none,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
         ),
-      ),
-      onPressed: elevatedButtonAction,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(elevatedButtonText,style: elevatedButtonTextStyle,),
-          if (elevatedButtonIcon != null) ...[
-            const SizedBox(width: 10),
-            elevatedButtonIcon!,
-            const SizedBox(width: 10),
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null) ...[
+              icon!,
+              const SizedBox(width: 10),
+            ],
+            Text(
+              text,
+              style: textStyle ?? const TextStyle(
+                color: AppColor.primaryColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
-        ],
+        ),
       ),
     );
   }

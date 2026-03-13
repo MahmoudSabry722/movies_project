@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../core/assets/app_assets.dart';
-import '../../../../../core/colors/app_color.dart';
-import '../../../../../core/strings/app_string.dart';
-import '../../../../../core/styles/app_style.dart';
+import 'package:movies/core/assets/app_assets.dart';
+import 'package:movies/core/colors/app_color.dart';
+import 'package:movies/core/strings/app_string.dart';
+import 'package:movies/core/styles/app_style.dart';
 
 class ProfileTabBar extends StatelessWidget {
   const ProfileTabBar({super.key});

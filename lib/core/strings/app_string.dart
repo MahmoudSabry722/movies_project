@@ -19,7 +19,7 @@ abstract class AppString {
 
   static const String exploreNow = "Explore Now";
 
-  static const String next = "next";
+  static const String next = "Next";
   static const String back = "Back";
   static const String finish = "Finish";
 
@@ -46,14 +46,6 @@ abstract class AppString {
   static const String watch = "Watch";
   static const String search = "Search";
 
-  static const String action = "Action";
-  static const String adventure = "Adventure";
-  static const String animation = "Animation";
-  static const String biography = "Biography";
-  static const String sciFi = "Sci-Fi";
-  static const String fantasy = "Fantasy";
-  static const String horror = "Horror";
-
   static const String editProfile = "Edit Profile";
   static const String exit = "Exit";
   static const String watchList = "Watch List";
@@ -61,6 +53,7 @@ abstract class AppString {
   static const String pickAvatar = "Pick Avatar";
   static const String deleteAccount = "Delete Account";
   static const String updateData = "Update Data";
+  static const String resetPassword = "Reset Password";
 
   static const String screenShots = "Screen Shots";
   static const String similar = "Similar";
