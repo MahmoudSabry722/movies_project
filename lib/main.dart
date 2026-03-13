@@ -6,6 +6,8 @@ import 'package:movies/features/onboarding/onboarding_screen.dart';
 import 'package:movies/features/home_screen/presentation/home_screen.dart';
 import 'package:movies/features/update_profile/presentation/screens/update_profile.dart';
 
+import 'features/auth/login_screen.dart';
+
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
           AppRoute.movieDetails: (context) => MovieDetailsScreen,
           ,*/
         },
-        initialRoute: AppRoute.onBoarding,
+        initialRoute: AppRoute.login,
       ),
     );
   }
