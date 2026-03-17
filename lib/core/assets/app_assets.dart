@@ -19,6 +19,7 @@ abstract class AppImage {
   static const String onBoarding6 = "${_basePath}onBoarding6.png";
 
   static const String logo = "${_basePath}logo.png";
+  static const String appLogo = "${_basePath}app_logo.png";
   static const String forgetPasswordImage =
       "${_basePath}forget_password_image.png";
   static const String availableNow = "${_basePath}available_now.png";

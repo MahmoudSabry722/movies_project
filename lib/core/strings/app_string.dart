@@ -26,6 +26,7 @@ abstract class AppString {
   static const String email = "Email";
   static const String password = "Password";
   static const String forgetPassword = "Forget Password?";
+  static const String forgetPasswordHead = "Forget Password";
   static const String login = "Login";
   static const String doNotHaveAccount = "Don't Have Account?";
   static const String createOne = "Create One";

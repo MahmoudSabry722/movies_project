@@ -1,71 +1,88 @@
 import 'package:flutter/material.dart';
-
 import '../colors/app_color.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final String hintText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-  final bool isObscureText;
+  final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final Function(String)? onChanged;
 
   const CustomTextFormField({
     super.key,
     required this.hintText,
     this.prefixIcon,
     this.suffixIcon,
-    this.isObscureText = false,
+    this.isPassword = false,
     this.controller,
     this.validator,
-    this.keyboardType,
+    this.keyboardType = TextInputType.text,
+    this.onChanged,
   });
+
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
-      obscureText: isObscureText,
-      validator: validator,
-      keyboardType: keyboardType,
+      onChanged: widget.onChanged,
+      controller: widget.controller,
+      obscureText: widget.isPassword ? obscureText : false,
+      validator: widget.validator,
+      keyboardType: widget.keyboardType,
+      cursorColor: AppColor.secondaryColor,
       style: const TextStyle(color: AppColor.textColor),
       decoration: InputDecoration(
-        hintText: hintText,
-      contentPadding: EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 14
-      ),
+        hintText: widget.hintText,
         hintStyle: const TextStyle(color: AppColor.textColor),
-        prefixIcon: prefixIcon != null
+        prefixIcon: widget.prefixIcon != null
             ? Padding(
-          padding: const EdgeInsets.only(left: 12, right: 8),
-          child: prefixIcon,
+          padding: const EdgeInsets.only(left: 16.0, right: 10.0),
+          child: widget.prefixIcon,
         )
             : null,
-
-        suffixIcon: suffixIcon != null
-            ? Padding(
-          padding: const EdgeInsets.only(right: 12, left: 8),
-          child: suffixIcon,
+        prefixIconConstraints: const BoxConstraints(
+          minWidth: 48,
+          minHeight: 24,
+        ),
+        suffixIcon: widget.isPassword
+            ? IconButton(
+          onPressed: () {
+            setState(() {
+              obscureText = !obscureText;
+            });
+          },
+          icon: Icon(
+            !obscureText
+                ? Icons.visibility_outlined
+                : Icons.visibility_off_outlined,
+          ),
+          color: AppColor.textColor,
         )
-            : null,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColor.tertiaryColor),
-        ),
+            : widget.suffixIcon,
 
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColor.secondaryColor, width: 1),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColor.elevatedButtonColor),
-        ),
+        enabledBorder: buildBorder(AppColor.tertiaryColor),
+        focusedBorder: buildBorder(AppColor.secondaryColor, width: 1),
+        errorBorder: buildBorder(AppColor.elevatedButtonColor),
+        focusedErrorBorder: buildBorder(AppColor.elevatedButtonColor, width: 1),
         filled: true,
         fillColor: AppColor.tertiaryColor,
       ),
+    );
+  }
+
+  OutlineInputBorder buildBorder(Color color, {double width = 1.0}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide(color: color, width: width),
     );
   }
 }
